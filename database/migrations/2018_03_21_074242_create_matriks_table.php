@@ -18,7 +18,7 @@ class CreateMatriksTable extends Migration
             $table->string('tempat_parkiran_matrik');
             $table->float('biaya_parkiran_matrik');
             $table->float('kondisi_cuaca_matrik');
-            $table->float('luas_tempat_parkir_m atrik');
+            $table->float('luas_tempat_parkir_matrik');
             $table->float('jarak_dari_kampus_matrik');
             $table->float('waktu_parkir_matrik');
             $table->timestamps();

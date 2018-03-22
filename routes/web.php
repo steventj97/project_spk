@@ -17,3 +17,4 @@
 	Route::resource('parkiran', 'ParkiranController');
 	Route::resource('normalisasi', 'NormalisasiController');
 	Route::resource('matrik', 'MatrikController');
+	Route::resource('keputusan', 'KeputusanController');

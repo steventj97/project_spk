@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\parkiran;
 use App\normalisasi;
+use App\matrik;
 use DateTime;
 
 class ParkiranController extends Controller
@@ -125,28 +126,7 @@ class ParkiranController extends Controller
         $normalisasi->waktu_parkir_normalisasi = $waktu_normalisasi;
         $normalisasi->save();
 
-        $biaya_parkiran = normalisasi::min('biaya_parkiran_normalisasi');
-        $kondisi_cuaca = normalisasi::max('kondisi_cuaca_normalisasi'); 
-        $luas_tempat_parkir = normalisasi::max('luas_tempat_parkir_normalisasi');
-        $jarak_dari_kampus = normalisasi::min('jarak_dari_kampus_normalisasi');
-        $waktu_parkir = normalisasi::min('waktu_parkir_normalisasi');
-        $normalisasi = DB::select('select * from normalisasis');
-        //min  matriks function waktu
-        foreach ($normalisasi as $normalisasi) {
-            $matrik_biaya = $biaya_parkiran / $normalisasi->biaya_parkiran_normalisasi;
-            $matrik_kondisi = $normalisasi->kondisi_cuaca_normalisasi / $kondisi_cuaca;
-            $matrik_luas = $normalisasi->luas_tempat_parkir_normalisasi / $luas_tempat_parkir;
-            $matrik_jarak = $jarak_dari_kampus / $normalisasi->jarak_dari_kampus_normalisasi;
-            $matrik_waktu = $waktu_parkir / $normalisasi->waktu_parkir_normalisasi;
-        }
-        $matrik  = new matrik;
-        $matrik->tempat_parkiran_matrik = $tempat;
-        $matrik->biaya_parkiran_matrik = $matrik_biaya;
-        $matrik->kondisi_cuaca_matrik = $matrik_kondisi;
-        $matrik->luas_tempat_parkir_matrik = $matrik_luas;
-        $matrik->jarak_dari_kampus_matrik= $matrik_jarak;
-        $matrik->waktu_parkir_matrik = $matrik_waktu;
-        $matrik->save();
+       
         return redirect()->route('parkiran.index');
     }
 
@@ -258,7 +238,7 @@ class ParkiranController extends Controller
         }else {
             $waktu_normalisasi = 5;
         }
-        $normalisasi  = normalisasi::find($id);;
+        $normalisasi  = normalisasi::find($id);
         $normalisasi->tempat_parkiran_normalisasi = $tempat;
         $normalisasi->biaya_parkiran_normalisasi = $biaya_normalisasi;
         $normalisasi->kondisi_cuaca_normalisasi = $kondisi_normalisasi;
@@ -266,6 +246,15 @@ class ParkiranController extends Controller
         $normalisasi->jarak_dari_kampus_normalisasi= $jarak_normalisasi;
         $normalisasi->waktu_parkir_normalisasi = $waktu_normalisasi;
         $normalisasi->save();
+
+        $matrik  = matrik::find($id);
+        $matrik->tempat_parkiran_matrik = $tempat;
+        $matrik->biaya_parkiran_matrik = $matrik_biaya;
+        $matrik->kondisi_cuaca_matrik = $matrik_kondisi;
+        $matrik->luas_tempat_parkir_matrik = $matrik_luas;
+        $matrik->jarak_dari_kampus_matrik= $matrik_jarak;
+        $matrik->waktu_parkir_matrik = $matrik_waktu;
+        $matrik->save();
 
         return redirect()->route('parkiran.index');
     }

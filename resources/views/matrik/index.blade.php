@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 
-    <title>Show Parkiran</title>
+    <title>Show Matrik</title>
   </head>
   <body>
   	<div class="content row">
   		<div class="container">
         <br>
-        <h3>Tabel Normalisasi</h3>
+        <h3>Tabel Matrik</h3>
         <br>
         <table class="table">
           <thead>
@@ -38,7 +38,7 @@
                 <td>{{$matrik->kondisi_cuaca_matrik}}</td>
                 <td>{{$matrik->luas_tempat_parkir_matrik}}</td>
                 <td>{{$matrik->jarak_dari_kampus_matrik}}</td>
-                <td>{{$matrik->waktu_parkir_normalisasi}}</td>  
+                <td>{{$matrik->waktu_parkir_matrik}}</td>  
               </tr>
             @endforeach
           </tbody>
