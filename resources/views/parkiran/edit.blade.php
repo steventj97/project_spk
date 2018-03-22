@@ -25,7 +25,13 @@
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Kondisi Cuaca</label>
-           <input class="form-control" type="text" placeholder="Kondisi Cuaca" name="kondisi_cuaca" value={{$parkiran->kondisi_cuaca}}>
+          <select class="form-control" id="exampleFormControlSelect1" name="kondisi_cuaca">
+              <option name="kondisi_cuaca" value="cerah">cerah</option>
+              <option name="kondisi_cuaca" value="berawan">berawan</option>
+              <option name="kondisi_cuaca" value="mendung">mendung</option>
+              <option name="kondisi_cuaca" value="gerimis">gerimis</option>
+              <option name="kondisi_cuaca" value="hujan">hujan</option>
+            </select>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Luas Wilayah Parkiran</label>
@@ -37,7 +43,13 @@
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Waktu Parkir</label>
-          <input class="form-control" type="text" placeholder="Waktu Parkir" name="waktu_parkir" value={{$parkiran->waktu_parkir}}>
+          <select class="form-control" id="exampleFormControlSelect1" name="waktu_parkir">
+              <option value="subuh">subuh</option>
+              <option value="pagi">pagi</option>
+              <option value="siang">siang</option>
+              <option value="sore">sore</option>
+              <option class="malam">malam</option>
+            </select>
         </div>
   		  <button type="submit" class="btn btn-primary">Update info parkiran</button>
   		</form>
